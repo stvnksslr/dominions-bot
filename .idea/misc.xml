@@ -53,7 +53,5 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="Pipenv (dominions-5-bot)" project-jdk-type="Python SDK">
-    <output url="file://$PROJECT_DIR$/out" />
-  </component>
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.7 (dominions-5-bot-gqZsJA1V)" project-jdk-type="Python SDK" />
 </project>
