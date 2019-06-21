@@ -1,14 +1,14 @@
-import discord
 import os
 
 from discord.ext import commands
 from dotenv import load_dotenv
 
-# Load Env Varriables
+# Load Env
 load_dotenv()
 
 description = '''A Dominions 5 Bot for keeping track of games and turn state'''
 bot = commands.Bot(command_prefix='!', description=description)
+
 
 @bot.event
 async def on_ready():

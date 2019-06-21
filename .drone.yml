@@ -16,11 +16,8 @@ steps:
       CC_TEST_REPORTER_ID:
         from_secret: CODE_CLIMATE
     commands:
-      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       - pip install --upgrade pip
       - pip install pipenv
       - chmod +x ./cc-test-reporter
       - pipenv install --dev --system
-      - ./cc-test-reporter before-build
-      - pytest --cov-branch --cov-report xml --cov=app app
-      - ./cc-test-reporter after-build --coverage-input-type coverage.py --exit-code $?
+      - pytest
