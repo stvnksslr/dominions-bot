@@ -6,12 +6,6 @@ from app.constants import Era, TurnStatus, NationType
 mock_game_id = 604
 
 
-@dataclass
-class GameStatus:
-    game_name: str
-    era: str
-    next_turn: str
-
 
 def get_game_status(game_id=mock_game_id):
     game_status = json.loads(
@@ -45,7 +39,7 @@ def get_player_status(game_id=mock_game_id):
             "nation_id": nation_id,
             "nation_epithet": nation_epithet,
             "nation_controller": nation_controller,
-            "nation_turn_status": nation_turn_status
+            "nation_turn_status": nation_turn_status,
         }
 
         player_list.update({nation_name: nation_info})
@@ -55,4 +49,4 @@ def get_player_status(game_id=mock_game_id):
 game_status = get_game_status()
 player_status = get_player_status()
 
-print('this is a break')
+print("this is a break")

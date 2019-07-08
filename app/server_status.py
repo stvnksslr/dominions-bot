@@ -1,57 +1,46 @@
-import socket
-import struct
-import zlib
+from struct import pack, unpack
+from socket import socket
+from zlib import decompress
 
-PACKET_HEADER = "<ccLB"
-mock_address = "snek.earth"
-mock_address_ip = '172.19.134.2'
-mock_port = 30604
-
-# See http://www.cs.helsinki.fi/u/aitakang/dom3_serverformat_notes for
-# descriptions for most of the protocol
-
-# Python 2 doesn't support enums with the standard libraries, so...
-era = {0: "None", 1: "EA", 2: "MA", 3: "LA"}
-
-status = {
-    0: "Empty",
-    1: "Human",
-    2: "AI",
-    3: "Independent",
-    253: "Closed",
-    254: "Defeated this turn",
-    255: "Defeated",
-}
+from app.constants import mock_address, mock_port, PACKET_HEADER, PACKET_GENERAL_INFO, PACKET_BYTES_PER_NATION, \
+    PACKET_NUM_NATIONS, GameStatus
 
 
 def query(address=mock_address, port=mock_port):
-    sck = socket.socket()
+    sck = socket()
     sck.settimeout(5.0)
     sck.connect((address, port))
-    # Little endian, 'fH', 32 bit message length, message body (char)
-    # f H 1 3
-    sck.send(struct.pack(PACKET_HEADER, b'f', b'H', 1, 3))
+
+    # request info
+    pack_game_request = pack(PACKET_HEADER, b'f', b'H', 1, 3)
+    sck.send(pack_game_request)
     result = sck.recv(512)
-    if result is not None:
-        if len(result) < 50:
-            print("error, received packet is not long enough")
-            return None
 
-        header = struct.unpack(PACKET_HEADER, result[0:7])
-        compressed = header[1] == "J"
-        packetlength = header[2]
-        packettype = header[3]
+    # close connection
+    sck.send(pack(PACKET_HEADER, b'f', b'H', 1, 11))
+    sck.close()
 
-        data = None
+    header = unpack(PACKET_HEADER, result[0:7])
+    compressed = (header[1] == b'J')
 
-        if compressed:
-            data = zlib.decompress(result[10:])
-        else:
-            data = result[10:]
+    data = None
 
-        game_name_len = len(data) - 26 - 750
-        game_name_buffer = (0, game_name_len)
-        print('yes cats')
+    if compressed:
+        data = decompress(result[10:])
+    else:
+        data = result[10:]
+
+    game_name_length = len(data) - len(
+        PACKET_GENERAL_INFO.format("", "")) - PACKET_BYTES_PER_NATION * PACKET_NUM_NATIONS - 6
+
+    data_array = unpack(
+        PACKET_GENERAL_INFO.format(game_name_length, PACKET_BYTES_PER_NATION * PACKET_NUM_NATIONS),
+        data)
+
+    return GameStatus(name=data_array[6],
+                      era=data_array[7],
+                      turn=data_array[-3])
 
 
-query()
+game_status = query()
+print(game_status)
