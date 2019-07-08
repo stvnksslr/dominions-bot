@@ -3,9 +3,9 @@ from enum import Enum
 
 
 class Era(Enum):
-    Early_Age = 1
-    Middle_Age = 2
-    Late_Age = 3
+    Early_Age = 0
+    Middle_Age = 1
+    Late_Age = 2
 
 
 class NationType(Enum):
@@ -27,7 +27,6 @@ class TurnStatus(Enum):
 @dataclass
 class GameStatus:
     name: str
-    era: str
     turn: str
 
 

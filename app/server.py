@@ -1,10 +1,8 @@
 import json
-from dataclasses import dataclass
 import requests
-from app.constants import Era, TurnStatus, NationType
+from app.constants import Era, TurnStatus, NationType, GameStatus
 
 mock_game_id = 604
-
 
 
 def get_game_status(game_id=mock_game_id):
@@ -14,7 +12,7 @@ def get_game_status(game_id=mock_game_id):
     game_name = game_status["name"]
     era = Era(game_status["era"]).name
     next_turn = game_status["hours"]
-    return GameStatus(game_name, era, next_turn)
+    return GameStatus(name=game_name, turn=None)
 
 
 def get_player_status(game_id=mock_game_id):
