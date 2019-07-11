@@ -17,3 +17,8 @@ steps:
       - pip install pipenv
       - pipenv install --dev --system
       - pytest
+---
+kind: signature
+hmac: c45cd4ccc2f54cb5807c6c7246e8e34aec98222f982774dae2ec5d72e9c8730d
+
+...
