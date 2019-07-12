@@ -3,6 +3,15 @@ from discord import Embed
 from app.server import get_game_status, get_player_status
 
 
+def fetch_alias(alias):
+    if alias == 'newbie-knife-fight':
+        return 604
+    if alias == 'earlier-birds':
+        return 643
+    else:
+        return
+
+
 async def get_game_details(game_id):
     game_status = get_game_status(game_id)
     player_status = get_player_status(game_id)

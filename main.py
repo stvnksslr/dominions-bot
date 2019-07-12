@@ -1,6 +1,6 @@
 import os
 from discord.ext import commands
-from app.game_server_info import get_game_details
+from app.game_server_info import get_game_details, fetch_alias
 
 description = """A Dominions 5 Bot for keeping track of games and turn state"""
 bot = commands.Bot(command_prefix="!", description=description)
@@ -12,20 +12,6 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print("------")
-
-
-@bot.command()
-async def ping(ctx):
-    await ctx.send("pong")
-
-
-def fetch_alias(alias):
-    if alias == 'newbie-knife-fight':
-        return 604
-    if alias == 'earlier-birds':
-        return 643
-    else:
-        return
 
 
 @bot.command()
