@@ -1,6 +1,6 @@
 import json
 import requests
-from app.constants import Era, TurnStatus, NationType, GameStatus
+from app.constants import TurnStatus, NationType, GameStatus
 from app.server_status import query
 
 
@@ -9,8 +9,6 @@ def get_game_status(game_id):
         requests.get("https://dom5.snek.earth/api/games/{}".format(game_id)).content
     )
     game_name = game_status["name"]
-    era = Era(game_status["era"]).name
-    next_turn = game_status["hours"]
 
     raw_game_info = query()
     return GameStatus(name=game_name, turn=raw_game_info.turn)
@@ -24,8 +22,6 @@ def get_player_status(game_id):
     )
 
     player_list = {}
-
-    player_count = len(player_status["nations"])
     player_nations = player_status["nations"]
     for nation in player_nations:
         nation_id = nation["nationid"]
