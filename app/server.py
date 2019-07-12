@@ -1,21 +1,22 @@
 import json
 import requests
 from app.constants import Era, TurnStatus, NationType, GameStatus
+from app.server_status import query
 
-mock_game_id = 604
 
-
-def get_game_status(game_id=mock_game_id):
+def get_game_status(game_id):
     game_status = json.loads(
         requests.get("https://dom5.snek.earth/api/games/{}".format(game_id)).content
     )
     game_name = game_status["name"]
     era = Era(game_status["era"]).name
     next_turn = game_status["hours"]
-    return GameStatus(name=game_name, turn=None)
+
+    raw_game_info = query()
+    return GameStatus(name=game_name, turn=raw_game_info.turn)
 
 
-def get_player_status(game_id=mock_game_id):
+def get_player_status(game_id):
     player_status = json.loads(
         requests.get(
             "https://dom5.snek.earth/api/games/{}/status".format(game_id)
@@ -42,9 +43,3 @@ def get_player_status(game_id=mock_game_id):
 
         player_list.update({nation_name: nation_info})
     return player_list
-
-
-game_status = get_game_status()
-player_status = get_player_status()
-
-print("this is a break")
