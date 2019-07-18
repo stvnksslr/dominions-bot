@@ -17,6 +17,7 @@ python-dotenv = "*"
 sqlalchemy = "*"
 pendulum = "*"
 alembic = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"

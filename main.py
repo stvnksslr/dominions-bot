@@ -15,6 +15,11 @@ async def on_ready():
 
 
 @bot.command()
+async def add_server(ctx, server_addres):
+    await ctx.send('Added Server')
+
+
+@bot.command()
 async def details(ctx, alias):
     game_id = fetch_alias(alias)
     if game_id:
