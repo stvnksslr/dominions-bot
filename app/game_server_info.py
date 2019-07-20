@@ -12,15 +12,14 @@ def fetch_alias(alias):
         return
 
 
-async def get_game_details(game_id):
+def get_game_details(game_id):
     game_status = get_game_status(game_id)
     player_status = get_player_status(game_id)
 
-    block, response = await format_game_details(game_status, player_status)
-    return block, response
+    return {"game_status": game_status, "player_status": player_status}
 
 
-async def format_game_details(game_status, player_status):
+def format_game_details(game_status, player_status):
     game_name = game_status.name
     turn = "Turn: {}".format(game_status.turn)
     newline = " \n"
