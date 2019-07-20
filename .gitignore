@@ -10,7 +10,8 @@ auto-save-list
 tramp
 .\#*
 
-.vscode
+.idea/
+.vscode/
 .idea/
 *.iml
 

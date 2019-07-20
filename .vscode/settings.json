@@ -1,9 +1,0 @@
-{
-    "python.pythonPath": "/Users/skessler/.virtualenvs/dominions-5-bot-gqZsJA1V/bin/python",
-    "python.testing.pytestArgs": [
-        "."
-    ],
-    "python.testing.unittestEnabled": false,
-    "python.testing.nosetestsEnabled": false,
-    "python.testing.pytestEnabled": true
-}
