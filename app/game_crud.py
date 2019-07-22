@@ -3,22 +3,28 @@ from app.models import Game
 
 
 def add_game(game_id, game_status, player_status):
-    new_game = Game(
-        server_id=game_id,
-        name=game_status.name,
-        turn=game_status.turn,
-        players=player_status)
+    existing_game = manual_session.query(Game).filter_by(server_id=game_id).first()
 
-    manual_session.add(new_game)
-    manual_session.commit()
-    return new_game
+    if existing_game:
+        return existing_game
+    else:
+        new_game = Game(
+            server_id=game_id,
+            name=game_status.name,
+            turn=game_status.turn,
+            players=player_status)
+
+        manual_session.add(new_game)
+        manual_session.commit()
+        return new_game
 
 
 def update_game(game_id, game_status, player_status):
     try:
-        game = Game.query.filter_by(id=game_id).first()
+        game = manual_session.query(Game).filter_by(id=game_id).first()
         game.turn = game_status[0].get('turn')
         game.players = player_status
+        manual_session.add(Game)
     except Exception as e:
         print('error could not update!')
 
