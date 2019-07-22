@@ -18,6 +18,7 @@ sqlalchemy = "*"
 pendulum = "*"
 alembic = "*"
 schedule = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
