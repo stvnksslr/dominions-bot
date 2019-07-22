@@ -24,10 +24,18 @@ def update_game(game_id, game_status, player_status):
         game = manual_session.query(Game).filter_by(id=game_id).first()
         game.turn = game_status[0].get('turn')
         game.players = player_status
-        manual_session.add(Game)
+        manual_session.add(game)
+        manual_session.commit()
+        return game
     except Exception as e:
         print('error could not update!')
 
 
-def delete_game(self):
-    pass
+def delete_game(game_id, alias):
+    if game_id:
+        game = manual_session.query(Game).filter_by(id=game_id)
+        manual_session.delete(game)
+    if alias:
+        game = manual_session.query(Game).filter_by(alias=alias)
+        manual_session.delete(game)
+    return
