@@ -1,6 +1,6 @@
 import os
 from discord.ext import commands
-from old_app.game_server_info import get_game_details, fetch_alias
+from app.game_server_info import get_game_details, fetch_alias
 
 description = """A Dominions 5 Bot for keeping track of games and turn state"""
 bot = commands.Bot(command_prefix="!", description=description)

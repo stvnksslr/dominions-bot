@@ -1,7 +1,7 @@
 from unittest import TestCase
 
 from app.game_crud import add_game
-from old_app.game_server_info import get_game_details
+from app.game_server_info import get_game_details
 
 
 class GameCrudTest(TestCase):

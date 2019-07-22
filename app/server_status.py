@@ -2,7 +2,7 @@ from struct import pack, unpack
 from socket import socket
 from zlib import decompress
 
-from old_app.constants import (
+from app.constants import (
     mock_address,
     mock_port,
     PACKET_HEADER,

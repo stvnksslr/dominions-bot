@@ -1,7 +1,7 @@
 import json
 import requests
-from old_app.constants import TurnStatus, NationType, GameStatus
-from old_app.server_status import query
+from app.constants import TurnStatus, NationType, GameStatus
+from app.server_status import query
 
 
 def get_game_status(game_id):
