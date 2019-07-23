@@ -3,29 +3,22 @@ from discord import Embed
 from app.server import get_game_status, get_player_status
 
 
-def fetch_alias(alias):
-    if alias == 'newbie-knife-fight':
-        return 604
-    if alias == 'earlier-birds':
-        return 643
-    else:
-        return
-
-
-def get_game_details(game_id):
+def get_game_details(port):
+    game_id = port.replace('30', '')
     game_status = get_game_status(game_id)
     player_status = get_player_status(game_id)
 
     return {"game_status": game_status, "player_status": player_status}
 
 
-def format_game_details(game_status, player_status):
-    game_name = game_status.name
-    turn = "Turn: {}".format(game_status.turn)
+def format_game_details(game):
+    game_name = game.name
+    turn = "Turn: {}".format(game.turn)
     newline = " \n"
     response = Embed(title=game_name, description=turn, color=0x00FF00)
     block = ""
-    for player in player_status.items():
+
+    for player in game.players.items():
         player_name = player[0]
         nation_id = player[1].get("nation_id")
         player_type = player[1].get("nation_controller")
