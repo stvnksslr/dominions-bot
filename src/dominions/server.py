@@ -1,7 +1,7 @@
 import json
 import requests
-from app.constants import TurnStatus, NationType, GameStatus
-from app.server_status import query
+from dominions.constants import TurnStatus, NationType, GameStatus
+from dominions.server_status import query
 
 
 def get_game_status(game_id):
@@ -10,7 +10,7 @@ def get_game_status(game_id):
     )
     game_name = game_status["name"]
 
-    raw_game_info = query()
+    raw_game_info = query(address="snek.earth", port=int(f"3{game_id}"))
     return GameStatus(name=game_name, turn=raw_game_info.turn)
 
 
@@ -21,7 +21,7 @@ def get_player_status(game_id):
         ).content
     )
 
-    player_list = {}
+    player_list = []
     player_nations = player_status["nations"]
     for nation in player_nations:
         nation_id = nation["nationid"]
@@ -31,11 +31,12 @@ def get_player_status(game_id):
         nation_turn_status = TurnStatus(int(nation["turnplayed"])).name
 
         nation_info = {
+            "nation_name": nation_name,
             "nation_id": nation_id,
             "nation_epithet": nation_epithet,
             "nation_controller": nation_controller,
             "nation_turn_status": nation_turn_status,
         }
 
-        player_list.update({nation_name: nation_info})
+        player_list.append(nation_info)
     return player_list

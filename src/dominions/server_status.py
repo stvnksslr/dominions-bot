@@ -2,9 +2,7 @@ from struct import pack, unpack
 from socket import socket
 from zlib import decompress
 
-from app.constants import (
-    mock_address,
-    mock_port,
+from dominions.constants import (
     PACKET_HEADER,
     PACKET_GENERAL_INFO,
     PACKET_BYTES_PER_NATION,
@@ -13,13 +11,31 @@ from app.constants import (
 )
 
 
-def query(address=mock_address, port=mock_port):
+def query(address, port):
     sck = socket()
     sck.settimeout(5.0)
     sck.connect((address, port))
 
+    # (b'f', b'H', b'\a', b'\x00', b'\x00', b'\x00', b'=', b'\x1e', b'\x02', b'\x11', b'E', b'\x05', b'\x00')
+    # b'<ccssssccccccc'
+
     # request info
-    pack_game_request = pack(PACKET_HEADER, b"f", b"H", 1, 3)
+    pack_game_request = pack(
+        "<ccssssccccccc",
+        b"f",
+        b"H",
+        b"\a",
+        b"\x00",
+        b"\x00",
+        b"\x00",
+        b"=",
+        b"\x1e",
+        b"\x02",
+        b"\x11",
+        b"E",
+        b"\x05",
+        b"\x00",
+    )
     sck.send(pack_game_request)
     result = sck.recv(512)
 

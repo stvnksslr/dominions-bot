@@ -1,10 +1,8 @@
-from discord import Embed
-
-from app.server import get_game_status, get_player_status
+from dominions.server import get_game_status, get_player_status
 
 
 def get_game_details(port):
-    game_id = port.replace('30', '')
+    game_id = port[1:]
     game_status = get_game_status(game_id)
     player_status = get_player_status(game_id)
 
@@ -15,7 +13,7 @@ def format_game_details(game):
     game_name = game.name
     turn = "Turn: {}".format(game.turn)
     newline = " \n"
-    response = Embed(title=game_name, description=turn, color=0x00FF00)
+    # response = Embed(title=game_name, description=turn, color=0x00FF00)
     block = ""
 
     for player in game.players.items():
@@ -32,4 +30,4 @@ def format_game_details(game):
         block = block + "{} {}({}): {} {}".format(
             turn_status, player_name, nation_id, player_type, newline
         )
-    return block, response
+    return block
