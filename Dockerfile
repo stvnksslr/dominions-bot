@@ -5,7 +5,6 @@ ENV PIP_DISABLE_PIP_VERSION_CHECK=on
 
 WORKDIR /app
 
-COPY ./src/local_settings.py /app
 COPY ./src /app
 COPY pyproject.toml poetry.lock /app/
 
