@@ -7,4 +7,4 @@ PLUGINS = ["machine.plugins.builtin.help.HelpPlugin", "plugins.dominions.TurnSta
 # Should the HTTP server be enabled?
 DISABLE_HTTP = True
 
-# ALIASES = '!'
+ALIASES = "!"
