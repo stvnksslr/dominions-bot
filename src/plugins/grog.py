@@ -17,4 +17,4 @@ class Grog(MachineBasePlugin):
     @listen_to(r"grog")
     def grog_responder(self, msg):
         random_grog = choice(grog_response_list)
-        msg.reply(text=random_grog)
+        msg.say(text=random_grog)
