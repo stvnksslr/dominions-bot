@@ -11,7 +11,7 @@ COPY pyproject.toml poetry.lock /app/
 
 RUN pip install --no-cache-dir  poetry
 RUN python -m poetry config virtualenvs.in-project true
-RUN python -m poetry install
+RUN python -m poetry install --no-dev
 
 
 CMD ["slack-machine"]
