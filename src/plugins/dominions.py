@@ -27,7 +27,6 @@ class TurnStatus(MachineBasePlugin):
     def info(self, msg, game):
         # https://snek.earth/api/games/1626
         game_details = get_game_details(game)
-        print(f"game_details: {game_details}")
         game_name = game_details.get("game_status").name
         turn = game_details.get("game_status").turn
 
@@ -37,10 +36,6 @@ class TurnStatus(MachineBasePlugin):
         ]
 
         raw_player_blocks = create_player_blocks(game_details)
-
-        print("HELLO I MADE IT THIS FAR!")
-
-        formatted_player_blocks = field_headers + raw_player_blocks
 
         formatted_msg = [
             {
@@ -62,17 +57,19 @@ class TurnStatus(MachineBasePlugin):
             {"type": "divider"},
             {
                 "type": "section",
-                "text": {"text": "*Player List*", "type": "mrkdwn"},
-                "fields": formatted_player_blocks[:10],
+                "text": {"type": "mrkdwn", "text": "*Player List*"},
+                "fields": field_headers,
             },
             {
                 "type": "section",
-                "text": {"text": ".", "type": "mrkdwn"},
-                "fields": formatted_player_blocks[10:],
+                "text": {"text": " ", "type": "mrkdwn"},
+                "fields": raw_player_blocks[:10],
+            },
+            {
+                "type": "section",
+                "text": {"text": " ", "type": "mrkdwn"},
+                "fields": raw_player_blocks[10:],
             },
         ]
-
-        print("Formatted Slack Message: ")
-        print(formatted_msg)
 
         msg.reply(text="", blocks=formatted_msg)
