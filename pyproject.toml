@@ -7,7 +7,7 @@ license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.7"
-python-dotenv = "^0.10.3"
+python-dotenv = "^0.14.0poetry u"
 httpx = "^0.13.3"
 slack-machine = "^0.20.1"
 
