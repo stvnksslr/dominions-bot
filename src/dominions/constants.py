@@ -30,13 +30,6 @@ class GameStatus:
     turn: str
 
 
-@dataclass
-class Nation:
-    id: int
-    name: str
-    era: Era
-
-
 PACKET_HEADER = "<ccLB"
 PACKET_BYTES_PER_NATION = 3
 PACKET_NUM_NATIONS = 250

@@ -16,7 +16,7 @@ def query(address, port):
     sck.settimeout(5.0)
     sck.connect((address, port))
 
-    # (b'f', b'H', b'\a', b'\x00', b'\x00', b'\x00', b'=', b'\x1e', b'\x02', b'\x11', b'E', b'\x05', b'\x00')
+    # b'f', b'H', b'\a', b'\x00', b'\x00', b'\x00', b'=', b'\x1e', b'\x02', b'\x11', b'E', b'\x05', b'\x00'
     # b'<ccssssccccccc'
 
     # request info
@@ -45,8 +45,6 @@ def query(address, port):
 
     header = unpack(PACKET_HEADER, result[0:7])
     compressed = header[1] == b"J"
-
-    data = None
 
     if compressed:
         data = decompress(result[10:])

@@ -15,4 +15,4 @@ class GameCrudTest(TestCase):
 
     def test__fetch_game_details(self):
         game_details = get_game_details("31626")
-        print("cats")
+        self.assertTrue(game_details)

@@ -11,7 +11,6 @@ def create_player_blocks(players):
         nation_name = player.get("nation_name")
         turn_status = player.get("nation_turn_status")
 
-        turn_status_emoji = ""
         if turn_status == "NotSubmitted":
             turn_status_emoji = ":x:"
         else:
