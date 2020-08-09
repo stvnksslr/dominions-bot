@@ -10,9 +10,14 @@ def create_player_blocks(players):
     for player in players.get("player_status"):
         nation_name = player.get("nation_name")
         turn_status = player.get("nation_turn_status")
+        player_type = player.get("nation_controller")
 
-        if turn_status == "NotSubmitted":
+        if player_type == "AI":
+            turn_status_emoji = ":robot_face:"
+        elif turn_status == "NotSubmitted":
             turn_status_emoji = ":x:"
+        elif turn_status == "PartiallySubmitted":
+            turn_status_emoji = ":question:"
         else:
             turn_status_emoji = ":white_check_mark:"
 
@@ -22,7 +27,6 @@ def create_player_blocks(players):
         }
 
         player_blocks.append(nation_section)
-    print("LOOK AT ME")
     print(player_blocks)
     return player_blocks
 
@@ -31,11 +35,11 @@ def pull_game_details(game):
     game_name, turn, raw_player_blocks = fetch_game_details(game)
 
     formatted_msg = [
-        {"type": "header", "text": {"type": "plain_text", "text": "Dominions Times"},},
+        {"type": "header", "text": {"type": "plain_text", "text": "Dominions Times"}, },
         {"type": "divider"},
         {
             "type": "section",
-            "text": {"type": "mrkdwn", "text": " :freak_lord: *Update* :freak_lord:",},
+            "text": {"type": "mrkdwn", "text": " :freak_lord: *Update* :freak_lord:", },
         },
         {
             "type": "section",
