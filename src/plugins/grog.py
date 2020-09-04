@@ -9,7 +9,7 @@ grog_response_list = [
     ":freak_lord:",
     ":_g: :_r: :_o: :_g:",
     ":sumpyee: :sumpyee2:",
-    ":ref:"
+    ":ref:",
 ]
 
 

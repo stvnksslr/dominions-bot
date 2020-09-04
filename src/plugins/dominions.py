@@ -35,11 +35,11 @@ def pull_game_details(game):
     game_name, turn, raw_player_blocks = fetch_game_details(game)
 
     formatted_msg = [
-        {"type": "header", "text": {"type": "plain_text", "text": "Dominions Times"}, },
+        {"type": "header", "text": {"type": "plain_text", "text": "Dominions Times"},},
         {"type": "divider"},
         {
             "type": "section",
-            "text": {"type": "mrkdwn", "text": " :freak_lord: *Update* :freak_lord:", },
+            "text": {"type": "mrkdwn", "text": " :freak_lord: *Update* :freak_lord:",},
         },
         {
             "type": "section",

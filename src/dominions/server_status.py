@@ -7,7 +7,6 @@ from dominions.constants import (
     PACKET_GENERAL_INFO,
     PACKET_BYTES_PER_NATION,
     PACKET_NUM_NATIONS,
-    GameStatus,
 )
 
 
@@ -65,4 +64,4 @@ def query(address, port):
         data,
     )
 
-    return GameStatus(name=data_array[6].decode().rstrip("\x00"), turn=data_array[-3])
+    return data_array[6].decode().rstrip("\x00"), data_array[-3]
