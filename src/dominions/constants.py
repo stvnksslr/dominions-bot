@@ -1,3 +1,8 @@
+# snek.earth constants
+SNEK_BASE_URL = "https://snek.earth/api/games/"
+
+
+# Packet Constants for scraping the game server itself
 PACKET_HEADER = "<ccLB"
 PACKET_BYTES_PER_NATION = 3
 PACKET_NUM_NATIONS = 250

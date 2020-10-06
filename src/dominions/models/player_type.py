@@ -1,10 +1,10 @@
 from enum import Enum
 
 
-class NationType(Enum):
+class PlayerType(Enum):
     Empty = 0
     Human = 1
-    AI = 2
+    Computer = 2
     Independent = 3
     Closed = 253
     Defeated_this_turn = 254

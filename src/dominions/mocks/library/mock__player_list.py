@@ -1,0 +1,52 @@
+from dominions.models.player import Player
+
+MOCK_PLAYER_LIST = [
+    Player(
+        nation_id="6",
+        nation_name="Ermor",
+        player_type="Human",
+        turn_status="Submitted"
+    ),
+    Player(
+        nation_id="8",
+        nation_name="Marverni",
+        player_type="Human",
+        turn_status="Submitted",
+    ),
+    Player(
+        nation_id="12",
+        nation_name="Mictlan",
+        player_type="Human",
+        turn_status="PartiallySubmitted",
+    ),
+    Player(
+        nation_id="16",
+        nation_name="Pangaea",
+        player_type="Human",
+        turn_status="Submitted",
+    ),
+    Player(
+        nation_id="18",
+        nation_name="Tir na n'Og",
+        player_type="Human",
+        turn_status="Submitted",
+    ),
+    Player(
+        nation_id="26",
+        nation_name="Lanka",
+        player_type="Human",
+        turn_status="Submitted",
+    ),
+    Player(
+        nation_id="27",
+        nation_name="Yomi",
+        player_type="Human",
+        turn_status="Submitted"
+    ),
+    Player(
+        nation_id="33",
+        nation_name="Ubar",
+        player_type="Human",
+        turn_status="Submitted"
+    ),
+]
