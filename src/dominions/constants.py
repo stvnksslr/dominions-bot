@@ -16,6 +16,7 @@ class NationType(Enum):
     Closed = 253
     Defeated_this_turn = 254
     Defeated = 255
+    Defeated_Duplicate = -2
 
 
 class TurnStatus(Enum):
