@@ -16,6 +16,7 @@ class NationType(Enum):
     Closed = 253
     Defeated_this_turn = 254
     Defeated = 255
+    eliminated_player = -1
     Defeated_Duplicate = -2
 
 
