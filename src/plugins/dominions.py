@@ -20,7 +20,7 @@ def create_player_blocks(players):
             or player_type == "Defeated_this_turn"
             or player_type == "Defeated"
         ):
-            turn_status_emoji = ":skull"
+            turn_status_emoji = ":skull:"
         elif turn_status == "NotSubmitted":
             turn_status_emoji = ":x:"
         elif turn_status == "PartiallySubmitted":
