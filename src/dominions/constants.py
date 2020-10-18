@@ -11,7 +11,7 @@ class Era(Enum):
 class NationType(Enum):
     Empty = 0
     Human = 1
-    AI = 2
+    Bot = 2
     Independent = 3
     Closed = 253
     Defeated_this_turn = 254

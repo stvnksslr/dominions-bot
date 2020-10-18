@@ -12,8 +12,15 @@ def create_player_blocks(players):
         turn_status = player.get("nation_turn_status")
         player_type = player.get("nation_controller")
 
-        if player_type == "AI":
+        if player_type == "Bot":
             turn_status_emoji = ":robot_face:"
+        elif (
+            player_type == "eliminated_player"
+            or player_type == "Defeated_Duplicate"
+            or player_type == "Defeated_this_turn"
+            or player_type == "Defeated"
+        ):
+            turn_status_emoji = ":skull"
         elif turn_status == "NotSubmitted":
             turn_status_emoji = ":x:"
         elif turn_status == "PartiallySubmitted":
@@ -35,11 +42,17 @@ def pull_game_details(game):
     game_name, turn, raw_player_blocks = fetch_game_details(game)
 
     formatted_msg = [
-        {"type": "header", "text": {"type": "plain_text", "text": "Dominions Times"}, },
+        {
+            "type": "header",
+            "text": {"type": "plain_text", "text": "Dominions Times"},
+        },
         {"type": "divider"},
         {
             "type": "section",
-            "text": {"type": "mrkdwn", "text": " :freak_lord: *Update* :freak_lord:", },
+            "text": {
+                "type": "mrkdwn",
+                "text": " :freak_lord: *Update* :freak_lord:",
+            },
         },
         {
             "type": "section",
