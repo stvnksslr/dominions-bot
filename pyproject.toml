@@ -6,8 +6,8 @@ authors = ["stvnksslr <stvnksslr@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
-python-dotenv = "^0.14.0poetry u"
+python = "^3.9"
+python-dotenv = "^0.14.0"
 httpx = "^0.13.3"
 slack-machine = "^0.20.1"
 
