@@ -79,6 +79,6 @@ def fetch_game_details(game):
 
 class TurnStatus(MachineBasePlugin):
     @respond_to(r"check (?P<game>\d+)")
-    def info(self, msg, game):
+    def info(msg, game):
         formatted_msg = pull_game_details(game)
         msg.reply(text="", blocks=formatted_msg)
