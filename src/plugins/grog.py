@@ -1,6 +1,6 @@
 from random import choice
 from machine.plugins.base import MachineBasePlugin
-from machine.plugins.decorators import listen_to
+from machine.plugins.decorators import listen_to, respond_to
 from httpx import get
 
 grog_response_list = [
