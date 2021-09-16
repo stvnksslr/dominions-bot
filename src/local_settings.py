@@ -6,6 +6,7 @@ PLUGINS = [
     "machine.plugins.builtin.help.HelpPlugin",
     "plugins.dominions.TurnStatus",
     "plugins.grog.Grog",
+    "plugins.grog.ValheimServer",
 ]
 
 # Should the HTTP server be enabled?
