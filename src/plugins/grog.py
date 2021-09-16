@@ -28,5 +28,5 @@ class ValheimServer(MachineBasePlugin):
         players = len(status.get("players"))
         server = status.get("server_name")
         msg.say(
-            text=f"server: {server} has {players} players online, direct connect: 167.172.8.35:32420 / pw: onlytims"
+            text=f"server: {server} has {players} players online, direct connect: 167.172.8.35:32420"
         )
