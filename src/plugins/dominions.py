@@ -39,7 +39,7 @@ def create_player_blocks(players):
 
 
 def pull_game_details(game):
-    game_name, turn, raw_player_blocks = fetch_game_details(game)
+    game_name, turn, raw_player_blocks, remaining_time = fetch_game_details(game)
 
     formatted_msg = [
         {
@@ -58,6 +58,10 @@ def pull_game_details(game):
             "type": "section",
             "text": {"type": "mrkdwn", "text": f"{game_name} Turn: {turn}"},
         },
+        {
+            "type": "section",
+            "text": {"type": "mrkdwn", "text": f"Remaining Hours: {remaining_time}"},
+        },
         {"type": "divider"},
         {"type": "section", "text": {"type": "mrkdwn", "text": "*Player List*"}},
     ]
@@ -71,10 +75,12 @@ def pull_game_details(game):
 def fetch_game_details(game):
     # https://snek.earth/api/games/1626
     game_details = get_game_details(game)
+
     game_name = game_details.get("game_status").name
     turn = game_details.get("game_status").turn
+    remaining_time = game_details.get('game_status').hours_remaining
     raw_player_blocks = create_player_blocks(game_details)
-    return game_name, turn, raw_player_blocks
+    return game_name, turn, raw_player_blocks, remaining_time
 
 
 class TurnStatus(MachineBasePlugin):

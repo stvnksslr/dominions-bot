@@ -30,6 +30,7 @@ class TurnStatus(Enum):
 class GameStatus:
     name: str
     turn: str
+    hours_remaining: str
 
 
 PACKET_HEADER = "<ccLB"

@@ -61,5 +61,6 @@ def query(address, port):
         ),
         data,
     )
+    hours_remaining = round(data_array[13] / (1000 * 60 * 60), 2)
 
-    return GameStatus(name=data_array[6].decode().rstrip("\x00"), turn=data_array[-3])
+    return GameStatus(name=data_array[6].decode().rstrip("\x00"), turn=data_array[-3], hours_remaining=hours_remaining)
