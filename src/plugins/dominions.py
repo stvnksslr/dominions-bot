@@ -78,7 +78,7 @@ def fetch_game_details(game):
 
     game_name = game_details.get("game_status").name
     turn = game_details.get("game_status").turn
-    remaining_time = game_details.get('game_status').hours_remaining
+    remaining_time = game_details.get("game_status").hours_remaining
     raw_player_blocks = create_player_blocks(game_details)
     return game_name, turn, raw_player_blocks, remaining_time
 

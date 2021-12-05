@@ -5,7 +5,7 @@ load_dotenv()
 PLUGINS = [
     "machine.plugins.builtin.help.HelpPlugin",
     "plugins.dominions.TurnStatus",
-    "plugins.grog.Grog"
+    "plugins.grog.Grog",
 ]
 
 # Should the HTTP server be enabled?

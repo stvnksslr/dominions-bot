@@ -11,7 +11,11 @@ def get_game_status(game_id):
     game_name = game_status["name"]
 
     raw_game_info = query(address="snek.earth", port=int(f"3{game_id}"))
-    return GameStatus(name=game_name, turn=raw_game_info.turn, hours_remaining=raw_game_info.hours_remaining)
+    return GameStatus(
+        name=game_name,
+        turn=raw_game_info.turn,
+        hours_remaining=raw_game_info.hours_remaining,
+    )
 
 
 def get_player_status(game_id):
