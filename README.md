@@ -15,5 +15,5 @@ Quick and dirty bot for checking dominions turns for use in slack.
 * Currently only supports games on snek.earth
 
 ### Current Commands
-* ! check <port number>
+* !check <port number>
 

@@ -1,5 +1,6 @@
 from machine.plugins.base import MachineBasePlugin
 from machine.plugins.decorators import respond_to
+from loguru import logger
 
 from dominions.game_server_info import get_game_details
 
@@ -15,10 +16,10 @@ def create_player_blocks(players):
         if player_type == "Bot":
             turn_status_emoji = ":robot_face:"
         elif (
-            player_type == "eliminated_player"
-            or player_type == "Defeated_Duplicate"
-            or player_type == "Defeated_this_turn"
-            or player_type == "Defeated"
+                player_type == "eliminated_player"
+                or player_type == "Defeated_Duplicate"
+                or player_type == "Defeated_this_turn"
+                or player_type == "Defeated"
         ):
             turn_status_emoji = ":skull:"
         elif turn_status == "NotSubmitted":
@@ -34,7 +35,7 @@ def create_player_blocks(players):
         }
 
         player_blocks.append(nation_section)
-    print(player_blocks)
+    logger.info(player_blocks)
     return player_blocks
 
 
@@ -67,7 +68,7 @@ def pull_game_details(game):
     ]
     test_list = formatted_msg + raw_player_blocks
 
-    print(test_list)
+    logger.info(test_list)
 
     return test_list
 
