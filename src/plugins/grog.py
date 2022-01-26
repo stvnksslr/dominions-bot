@@ -15,7 +15,7 @@ grog_response_list = [
 turn_response_list = [
     "yo this turn looking stale",
     "wrap it up",
-    ":warpitup:",
+    ":wrapitup:",
     ":ref: off sides add 12 hours to turn timer",
     ":eyes:",
     ":sonic_construction:"
