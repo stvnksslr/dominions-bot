@@ -12,6 +12,7 @@ grog_response_list = [
     ":ref:",
 ]
 
+
 class Grog(MachineBasePlugin):
     @listen_to(r"grog")
     def grog_responder(self, msg):

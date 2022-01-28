@@ -16,10 +16,10 @@ def create_player_blocks(players):
         if player_type == "Bot":
             turn_status_emoji = ":robot_face:"
         elif (
-                player_type == "eliminated_player"
-                or player_type == "Defeated_Duplicate"
-                or player_type == "Defeated_this_turn"
-                or player_type == "Defeated"
+            player_type == "eliminated_player"
+            or player_type == "Defeated_Duplicate"
+            or player_type == "Defeated_this_turn"
+            or player_type == "Defeated"
         ):
             turn_status_emoji = ":skull:"
         elif turn_status == "NotSubmitted":
